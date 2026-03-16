@@ -1,13 +1,16 @@
 :root {
   color-scheme: light;
-  --bg: linear-gradient(135deg, #f6efe4 0%, #dfe7f2 100%);
-  --panel: rgba(255, 250, 245, 0.84);
-  --panel-border: rgba(44, 62, 80, 0.12);
-  --text: #1f2a37;
-  --muted: #5f6c7b;
-  --accent: #b5542f;
-  --accent-dark: #8d3f21;
-  --shadow: 0 20px 50px rgba(40, 51, 66, 0.16);
+  --bg:
+    radial-gradient(circle at top left, rgba(123, 180, 255, 0.34), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(62, 114, 216, 0.24), transparent 34%),
+    linear-gradient(140deg, #e8f2ff 0%, #d8e7fb 38%, #c5d9f4 100%);
+  --panel: rgba(242, 248, 255, 0.8);
+  --panel-border: rgba(53, 92, 153, 0.16);
+  --text: #16324f;
+  --muted: #58708d;
+  --accent: #2b6fdf;
+  --accent-dark: #1f56ae;
+  --shadow: 0 24px 60px rgba(34, 71, 126, 0.18);
 }
 
 * {
@@ -41,7 +44,7 @@ body {
   border-radius: 28px;
   padding: 24px;
   box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px);
 }
 
 .panel--preview {
@@ -88,6 +91,7 @@ body {
   padding: 16px;
   border: 1px solid var(--panel-border);
   border-radius: 20px;
+  background: rgba(255, 255, 255, 0.28);
   display: grid;
   gap: 12px;
 }
@@ -117,10 +121,10 @@ body {
 .field-group input[type="text"],
 .field-group select {
   width: 100%;
-  border: 1px solid rgba(31, 42, 55, 0.15);
+  border: 1px solid rgba(62, 96, 146, 0.18);
   border-radius: 14px;
   padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.78);
   color: var(--text);
   font: inherit;
 }
@@ -130,8 +134,8 @@ body {
   height: 48px;
   padding: 4px;
   border-radius: 14px;
-  border: 1px solid rgba(31, 42, 55, 0.15);
-  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(62, 96, 146, 0.18);
+  background: rgba(255, 255, 255, 0.78);
 }
 
 .file-picker {
@@ -139,9 +143,9 @@ body {
   align-items: center;
   gap: 12px;
   padding: 10px;
-  border: 1px solid rgba(31, 42, 55, 0.15);
+  border: 1px solid rgba(62, 96, 146, 0.18);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.78);
 }
 
 .file-picker input[type="file"] {
@@ -209,9 +213,9 @@ button {
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
   color: var(--text);
-  border: 1px solid rgba(31, 42, 55, 0.12);
+  border: 1px solid rgba(62, 96, 146, 0.16);
 }
 
 button:hover {
@@ -219,7 +223,7 @@ button:hover {
 }
 
 .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .hint,
@@ -248,8 +252,10 @@ button:hover {
   max-height: 520px;
   margin-top: 22px;
   border-radius: 28px;
-  background: #d3dde8;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  background: linear-gradient(180deg, #d9e8fb 0%, #c5d8f2 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+    0 22px 46px rgba(40, 82, 145, 0.16);
 }
 
 .preview::before {
@@ -257,8 +263,8 @@ button:hover {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
   background-size: 52px 52px;
   pointer-events: none;
 }
@@ -266,7 +272,7 @@ button:hover {
 .preview__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(232, 242, 255, 0.2);
 }
 
 .preview__chrome {
@@ -279,8 +285,8 @@ button:hover {
 
 .preview__topbar,
 .preview__toolbar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(223, 236, 255, 0.28);
 }
 
 .preview__topbar {
@@ -294,7 +300,7 @@ button:hover {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .preview__toolbar {
@@ -309,7 +315,7 @@ button:hover {
   width: min(320px, 48%);
   height: 34px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(248, 252, 255, 0.62);
 }
 
 .preview__toolbar-actions {
@@ -321,7 +327,7 @@ button:hover {
   width: 68px;
   height: 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(248, 252, 255, 0.54);
 }
 
 .preview__pill--short {
@@ -340,8 +346,8 @@ button:hover {
 }
 
 .preview__sidebar {
-  border-right: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.16);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(226, 239, 255, 0.22);
 }
 
 .preview__grid {
@@ -352,7 +358,7 @@ button:hover {
 .preview__card,
 .preview__event {
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(247, 251, 255, 0.62);
   backdrop-filter: blur(10px);
 }
 
