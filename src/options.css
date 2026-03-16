@@ -45,7 +45,7 @@ body {
 }
 
 .panel--preview {
-  min-height: 680px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -242,7 +242,10 @@ button:hover {
 .preview {
   position: relative;
   overflow: hidden;
-  min-height: 620px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  max-height: 520px;
   margin-top: 22px;
   border-radius: 28px;
   background: #d3dde8;
@@ -270,7 +273,7 @@ button:hover {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-rows: 28px 78px 1fr;
+  grid-template-rows: 22px 58px 1fr;
   height: 100%;
 }
 
@@ -304,7 +307,7 @@ button:hover {
 
 .preview__search {
   width: min(320px, 48%);
-  height: 42px;
+  height: 34px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.58);
 }
@@ -315,25 +318,25 @@ button:hover {
 }
 
 .preview__pill {
-  width: 82px;
-  height: 18px;
+  width: 68px;
+  height: 14px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.5);
 }
 
 .preview__pill--short {
-  width: 54px;
+  width: 42px;
 }
 
 .preview__body {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 180px 1fr;
   height: 100%;
 }
 
 .preview__sidebar,
 .preview__grid {
-  padding: 18px;
+  padding: 14px;
 }
 
 .preview__sidebar {
@@ -343,7 +346,7 @@ button:hover {
 
 .preview__grid {
   position: relative;
-  min-height: 514px;
+  min-height: 390px;
 }
 
 .preview__card,
@@ -354,33 +357,33 @@ button:hover {
 }
 
 .preview__card {
-  height: 72px;
-  margin-bottom: 14px;
+  height: 54px;
+  margin-bottom: 12px;
 }
 
 .preview__card--tall {
-  height: 132px;
+  height: 98px;
 }
 
 .preview__event {
   position: absolute;
-  left: 30px;
-  right: 30px;
-  height: 66px;
+  left: 20px;
+  right: 20px;
+  height: 50px;
 }
 
 .preview__event--one {
-  top: 44px;
+  top: 26px;
 }
 
 .preview__event--two {
-  top: 150px;
-  right: 120px;
+  top: 108px;
+  right: 88px;
 }
 
 .preview__event--three {
-  top: 274px;
-  left: 110px;
+  top: 198px;
+  left: 78px;
 }
 
 @media (max-width: 960px) {
@@ -398,14 +401,15 @@ button:hover {
   }
 
   .preview {
-    min-height: 460px;
+    aspect-ratio: 16 / 10;
+    max-height: none;
   }
 
   .preview__body {
-    grid-template-columns: 160px 1fr;
+    grid-template-columns: 136px 1fr;
   }
 
   .preview__grid {
-    min-height: 354px;
+    min-height: 292px;
   }
 }
