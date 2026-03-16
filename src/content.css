@@ -4,9 +4,25 @@ body.gcbe-ready {
 }
 
 body.gcbe-ready {
-  --gcbe-panel: rgba(255, 255, 255, 0.08);
-  --gcbe-panel-strong: rgba(255, 255, 255, 0.14);
   --gcbe-sidebar-radius: 24px;
+  --gcbe-panel: rgba(255, 255, 255, 0.16);
+  --gcbe-panel-strong: rgba(255, 255, 255, 0.24);
+  --gcbe-panel-border: rgba(255, 255, 255, 0.18);
+  --gcbe-panel-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+}
+
+body.gcbe-ready.gcbe-dark-theme {
+  --gcbe-panel: rgba(14, 14, 16, 0.62);
+  --gcbe-panel-strong: rgba(24, 24, 27, 0.76);
+  --gcbe-panel-border: rgba(255, 255, 255, 0.06);
+  --gcbe-panel-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+}
+
+body.gcbe-ready.gcbe-light-theme {
+  --gcbe-panel: rgba(255, 255, 255, 0.34);
+  --gcbe-panel-strong: rgba(255, 255, 255, 0.48);
+  --gcbe-panel-border: rgba(255, 255, 255, 0.26);
+  --gcbe-panel-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
 }
 
 #gcbe-background-layer {
@@ -57,21 +73,32 @@ body.gcbe-ready {
 }
 
 .QQYuzf,
-.YO50ue,
 .gboEAb,
 .Az5uJd.RLj2u,
 .wBon4c,
 .Zlotdb {
   background-color: var(--gcbe-panel) !important;
+  border: 1px solid var(--gcbe-panel-border) !important;
   border-radius: var(--gcbe-sidebar-radius) !important;
+  box-shadow: var(--gcbe-panel-shadow) !important;
+  backdrop-filter: blur(14px) !important;
   overflow: hidden !important;
 }
 
 .QQYuzf,
-.YO50ue,
 .gboEAb {
   margin-left: 10px !important;
   margin-bottom: 10px !important;
+}
+
+.YO50ue {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin-left: 0 !important;
+  margin-bottom: 0 !important;
+  backdrop-filter: none !important;
 }
 
 .sS0sZd,

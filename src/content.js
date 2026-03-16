@@ -10,6 +10,7 @@ const DEFAULT_SETTINGS = {
 };
 
 const BACKGROUND_ID = "gcbe-background-layer";
+const DARK_THEME_CLASS = "CcsDpe";
 const TRANSPARENT_SELECTORS = [
   "html",
   "body",
@@ -65,6 +66,24 @@ function markTransparentNodes() {
   document.body.classList.add("gcbe-ready");
 }
 
+function syncThemeClass() {
+  if (!document.body) {
+    return;
+  }
+
+  const isDarkTheme = document.body.classList.contains(DARK_THEME_CLASS);
+  const shouldHaveDark = isDarkTheme;
+  const shouldHaveLight = !isDarkTheme;
+
+  if (document.body.classList.contains("gcbe-dark-theme") !== shouldHaveDark) {
+    document.body.classList.toggle("gcbe-dark-theme", shouldHaveDark);
+  }
+
+  if (document.body.classList.contains("gcbe-light-theme") !== shouldHaveLight) {
+    document.body.classList.toggle("gcbe-light-theme", shouldHaveLight);
+  }
+}
+
 function getImageSource(settings) {
   if (settings.backgroundType === "url") {
     return settings.imageUrl;
@@ -84,6 +103,7 @@ function applyBackground(settings) {
 
   const layer = ensureBackgroundLayer();
   markTransparentNodes();
+  syncThemeClass();
 
   const imageSource = getImageSource(settings);
   const hasImage = Boolean(imageSource);
@@ -97,13 +117,22 @@ function applyBackground(settings) {
 }
 
 function initObserver() {
-  const observer = new MutationObserver(() => {
+  const contentObserver = new MutationObserver(() => {
     markTransparentNodes();
   });
 
-  observer.observe(document.documentElement, {
+  contentObserver.observe(document.documentElement, {
     childList: true,
     subtree: true
+  });
+
+  const themeObserver = new MutationObserver(() => {
+    syncThemeClass();
+  });
+
+  themeObserver.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["class"]
   });
 }
 
