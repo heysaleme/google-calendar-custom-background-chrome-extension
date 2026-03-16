@@ -20,6 +20,8 @@ Current features:
 - adjust overlay opacity
 - live preview in the options page
 - automatic background update for open Google Calendar tabs
+- transparent and softened sidebar surfaces so the background also shows through the left panel more cleanly
+- automatic adaptation for Google Calendar light and dark themes
 
 The image behavior is intentionally fixed to:
 - `background-size: cover`
@@ -50,6 +52,7 @@ That keeps the UI simpler and makes preview behavior consistent with the applied
 - loads and saves settings with `chrome.storage.local`
 - handles local file upload
 - updates the live preview
+- keeps the UI intentionally minimal: source selection, upload/color input, opacity, save, and reset
 
 `src/content.js`
 
@@ -57,11 +60,13 @@ That keeps the UI simpler and makes preview behavior consistent with the applied
 - reads saved settings from `chrome.storage.local`
 - injects and updates the background layer
 - listens for settings changes and reapplies them
+- detects the current Google Calendar theme and applies matching extension theme classes
 
 `src/content.css`
 
 - styles for the injected background layer
 - helper classes used to make Google Calendar containers transparent enough for the custom background to show through
+- contains targeted fixes for sidebar and task-related surfaces
 
 ## How It Works
 
@@ -79,6 +84,8 @@ The extension has two main parts:
 - inserts a fixed background layer behind the Calendar UI
 - applies the saved image or color
 - keeps an overlay so the calendar content stays readable
+- softens selected sidebar surfaces with transparency and rounded corners
+- reacts to Google Calendar dark/light theme changes
 
 ## Installation
 
@@ -106,11 +113,26 @@ If you change the source files:
 1. reload the extension in `chrome://extensions`
 2. refresh the Google Calendar tab
 
+## Current UI
+
+The options page currently exposes only the core controls:
+- background source
+- image URL or local upload or solid color
+- overlay opacity
+- save and reset
+
+The following image behaviors are fixed by design:
+- `cover`
+- centered positioning
+
+This was done to keep preview behavior predictable and avoid mismatches between the preview and the real Google Calendar layout.
+
 ## Limitations
 
 - Google Calendar is a third-party app, so DOM or class name changes on Google's side can require updates to the content script
 - some external image URLs may behave differently depending on how the remote server serves the image
 - large local images are stored in browser local storage, so very large files are not ideal
+- sidebar/task transparency depends on Google Calendar class names, so Google UI updates can require selector fixes
 
 ## Future Ideas
 
