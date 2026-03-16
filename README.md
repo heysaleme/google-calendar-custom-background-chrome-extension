@@ -1,13 +1,17 @@
 # Google Calendar Custom Background
 
-Chromium extension for adding a custom background to Google Calendar.
+Chromium extension for adding a custom background to Google Calendar with a lightweight settings page and live preview.
 
 It supports three background sources:
 - image URL
 - solid color
 - local image upload
 
-The extension also includes a settings page with a live preview before applying changes to Google Calendar.
+The extension also includes:
+- a live preview before applying changes
+- a top-bar button inside Google Calendar that opens the extension settings
+- custom extension icons
+- sidebar styling that lets the background show through more cleanly
 
 ## What The Project Does
 
@@ -20,6 +24,8 @@ Current features:
 - adjust overlay opacity
 - live preview in the options page
 - automatic background update for open Google Calendar tabs
+- extension toolbar icon and custom branding assets
+- settings shortcut button inside the Google Calendar header
 - transparent and softened sidebar surfaces so the background also shows through the left panel more cleanly
 - automatic adaptation for Google Calendar light and dark themes
 
@@ -34,7 +40,12 @@ That keeps the UI simpler and makes preview behavior consistent with the applied
 `manifest.json`
 
 - Chrome extension manifest using Manifest V3
-- registers permissions, options page, and Google Calendar content script
+- registers permissions, options page, background worker, icons, and Google Calendar content script
+
+`src/background.js`
+
+- background service worker
+- opens the extension options page when the in-calendar button is clicked
 
 `src/options.html`
 
@@ -61,16 +72,23 @@ That keeps the UI simpler and makes preview behavior consistent with the applied
 - injects and updates the background layer
 - listens for settings changes and reapplies them
 - detects the current Google Calendar theme and applies matching extension theme classes
+- injects a button into the Google Calendar top bar that opens the settings page
 
 `src/content.css`
 
 - styles for the injected background layer
 - helper classes used to make Google Calendar containers transparent enough for the custom background to show through
 - contains targeted fixes for sidebar and task-related surfaces
+- styles the in-calendar settings button
+
+`assets/`
+
+- extension icons and icon source artwork
+- optional place for screenshots used in the README
 
 ## How It Works
 
-The extension has two main parts:
+The extension has three main parts:
 
 1. Options page
 
@@ -86,6 +104,12 @@ The extension has two main parts:
 - keeps an overlay so the calendar content stays readable
 - softens selected sidebar surfaces with transparency and rounded corners
 - reacts to Google Calendar dark/light theme changes
+- adds a quick settings button in the Calendar header
+
+3. Background worker
+
+- receives a message from the in-calendar button
+- opens the extension options page in a safe extension-controlled way
 
 ## Installation
 
@@ -103,6 +127,7 @@ After that:
 2. Choose a background source.
 3. Save the settings.
 4. Open or refresh Google Calendar.
+5. You can also use the small background/settings button inside the Google Calendar top bar to reopen the settings page later.
 
 ## Development Notes
 
@@ -127,6 +152,21 @@ The following image behaviors are fixed by design:
 
 This was done to keep preview behavior predictable and avoid mismatches between the preview and the real Google Calendar layout.
 
+## Screenshots
+
+If you want to add screenshots to the repository, put them here:
+
+- `assets/screenshots/options-page.png`
+- `assets/screenshots/calendar-view.png`
+
+Recommended screenshots:
+
+1. `options-page.png`
+   Show the extension settings page with the blue theme and preview visible.
+
+2. `calendar-view.png`
+   Show Google Calendar with a custom background already applied, including the softened left sidebar and the small header button that opens settings.
+
 ## Limitations
 
 - Google Calendar is a third-party app, so DOM or class name changes on Google's side can require updates to the content script
@@ -136,7 +176,7 @@ This was done to keep preview behavior predictable and avoid mismatches between 
 
 ## Future Ideas
 
-- dark and light preset themes for the options page
 - built-in background presets
 - blur, brightness, or dimming controls
 - separate presets for different Google Calendar views
+- multiple visual styles for the in-calendar sidebar surfaces
