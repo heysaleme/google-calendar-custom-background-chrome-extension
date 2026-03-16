@@ -1,0 +1,30 @@
+html.gcbe-ready,
+body.gcbe-ready {
+  background: transparent !important;
+}
+
+#gcbe-background-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#gcbe-background-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gcbe-overlay, rgba(255, 255, 255, 0.22));
+}
+
+#gcbe-background-layer.gcbe-color-only::after {
+  background: transparent;
+}
+
+.gcbe-transparent,
+.gcbe-transparent::before,
+.gcbe-transparent::after {
+  background-color: transparent !important;
+}

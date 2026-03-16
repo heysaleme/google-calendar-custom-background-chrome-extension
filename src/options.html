@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Google Calendar Custom Background</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <div class="panel__header">
+          <p class="eyebrow">Chromium Extension</p>
+          <h1>Google Calendar Custom Background</h1>
+          <p class="lede">Choose a background source, preview it, and apply it to Google Calendar.</p>
+        </div>
+
+        <form id="settings-form" class="form">
+          <fieldset class="source-picker">
+            <legend>Background source</legend>
+
+            <label class="choice">
+              <input type="radio" name="backgroundType" value="url" checked>
+              <span>Image URL</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="backgroundType" value="color">
+              <span>Color</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="backgroundType" value="local">
+              <span>Local image</span>
+            </label>
+          </fieldset>
+
+          <div class="field-group" data-type-panel="url">
+            <label for="image-url">Image URL</label>
+            <input id="image-url" name="imageUrl" type="url" placeholder="https://example.com/background.jpg">
+            <p class="hint">Use a direct image URL if possible.</p>
+          </div>
+
+          <div class="field-group is-hidden" data-type-panel="color">
+            <label for="background-color">Background color</label>
+            <div class="color-row">
+              <input id="background-color" name="backgroundColor" type="color" value="#27476e">
+              <input id="background-color-text" name="backgroundColorText" type="text" value="#27476e" pattern="^#([A-Fa-f0-9]{6})$">
+            </div>
+          </div>
+
+          <div class="field-group is-hidden" data-type-panel="local">
+            <label for="local-file">Local image</label>
+            <input id="local-file" name="localFile" type="file" accept="image/*">
+            <p class="hint" id="local-file-name">No file selected.</p>
+          </div>
+
+          <div class="field-group">
+            <label for="overlay-opacity">Overlay opacity</label>
+            <div class="range-row">
+              <input id="overlay-opacity" name="overlayOpacity" type="range" min="0" max="85" value="22">
+              <output id="overlay-opacity-value" for="overlay-opacity">22%</output>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="background-size">Image fit</label>
+            <select id="background-size" name="backgroundSize">
+              <option value="cover">Cover</option>
+              <option value="contain">Contain</option>
+              <option value="auto">Auto</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="background-position">Image position</label>
+            <select id="background-position" name="backgroundPosition">
+              <option value="center center">Center</option>
+              <option value="top center">Top</option>
+              <option value="bottom center">Bottom</option>
+              <option value="center left">Left</option>
+              <option value="center right">Right</option>
+            </select>
+          </div>
+
+          <div class="actions">
+            <button id="save-button" type="submit">Save and apply</button>
+            <button id="reset-button" type="button" class="button-secondary">Reset</button>
+          </div>
+        </form>
+
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel panel--preview">
+        <div class="panel__header">
+          <p class="eyebrow">Preview</p>
+          <h2>How it will look</h2>
+        </div>
+
+        <div id="preview" class="preview">
+          <div class="preview__overlay"></div>
+          <div class="preview__chrome">
+            <div class="preview__topbar">
+              <span class="preview__dot"></span>
+              <span class="preview__dot"></span>
+              <span class="preview__dot"></span>
+            </div>
+            <div class="preview__toolbar"></div>
+            <div class="preview__body">
+              <aside class="preview__sidebar">
+                <div class="preview__card preview__card--tall"></div>
+                <div class="preview__card"></div>
+                <div class="preview__card"></div>
+              </aside>
+              <section class="preview__grid">
+                <div class="preview__event preview__event--one"></div>
+                <div class="preview__event preview__event--two"></div>
+                <div class="preview__event preview__event--three"></div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>

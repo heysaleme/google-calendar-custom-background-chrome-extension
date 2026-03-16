@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Google Calendar Custom Background",
+  "version": "0.1.0",
+  "description": "Apply a custom background to Google Calendar with URL, color, or local upload.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://calendar.google.com/*"
+  ],
+  "options_page": "src/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://calendar.google.com/*"
+      ],
+      "js": [
+        "src/content.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
