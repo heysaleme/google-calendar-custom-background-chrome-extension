@@ -51,7 +51,11 @@
 
           <div class="field-group is-hidden" data-type-panel="local">
             <label for="local-file">Local image</label>
-            <input id="local-file" name="localFile" type="file" accept="image/*">
+            <div class="file-picker">
+              <input id="local-file" name="localFile" type="file" accept="image/*">
+              <label for="local-file" class="file-picker__button">Choose image</label>
+              <span class="file-picker__meta">JPG, PNG, WEBP</span>
+            </div>
             <p class="hint" id="local-file-name">No file selected.</p>
           </div>
 
@@ -106,7 +110,13 @@
               <span class="preview__dot"></span>
               <span class="preview__dot"></span>
             </div>
-            <div class="preview__toolbar"></div>
+            <div class="preview__toolbar">
+              <div class="preview__search"></div>
+              <div class="preview__toolbar-actions">
+                <span class="preview__pill"></span>
+                <span class="preview__pill preview__pill--short"></span>
+              </div>
+            </div>
             <div class="preview__body">
               <aside class="preview__sidebar">
                 <div class="preview__card preview__card--tall"></div>

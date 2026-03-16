@@ -78,7 +78,7 @@ function applyPreview(settings) {
 
   previewNode.style.backgroundColor = settings.backgroundColor;
   previewNode.style.backgroundImage = imageSource ? `url("${imageSource}")` : "none";
-  previewNode.style.backgroundSize = settings.backgroundSize;
+  previewNode.style.backgroundSize = settings.backgroundSize === "cover" ? "contain" : settings.backgroundSize;
   previewNode.style.backgroundPosition = settings.backgroundPosition;
   previewNode.style.backgroundRepeat = "no-repeat";
 

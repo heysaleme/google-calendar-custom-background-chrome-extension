@@ -17,6 +17,8 @@
 body {
   margin: 0;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   color: var(--text);
   background: var(--bg);
@@ -25,10 +27,12 @@ body {
 .app {
   display: grid;
   grid-template-columns: minmax(320px, 480px) minmax(320px, 1fr);
+  align-items: center;
   gap: 24px;
   max-width: 1280px;
   margin: 0 auto;
   padding: 32px;
+  width: 100%;
 }
 
 .panel {
@@ -42,6 +46,9 @@ body {
 
 .panel--preview {
   min-height: 680px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .panel__header h1,
@@ -108,7 +115,6 @@ body {
 
 .field-group input[type="url"],
 .field-group input[type="text"],
-.field-group input[type="file"],
 .field-group select {
   width: 100%;
   border: 1px solid rgba(31, 42, 55, 0.15);
@@ -126,6 +132,52 @@ body {
   border-radius: 14px;
   border: 1px solid rgba(31, 42, 55, 0.15);
   background: rgba(255, 255, 255, 0.82);
+}
+
+.file-picker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid rgba(31, 42, 55, 0.15);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.file-picker input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.file-picker__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff7f0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.file-picker__button:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+.file-picker__meta {
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .color-row,
@@ -190,7 +242,7 @@ button:hover {
 .preview {
   position: relative;
   overflow: hidden;
-  min-height: 560px;
+  min-height: 620px;
   margin-top: 22px;
   border-radius: 28px;
   background: #d3dde8;
@@ -218,7 +270,7 @@ button:hover {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-rows: 28px 72px 1fr;
+  grid-template-rows: 28px 78px 1fr;
   height: 100%;
 }
 
@@ -242,9 +294,40 @@ button:hover {
   background: rgba(255, 255, 255, 0.65);
 }
 
+.preview__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 18px;
+}
+
+.preview__search {
+  width: min(320px, 48%);
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.preview__toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.preview__pill {
+  width: 82px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.preview__pill--short {
+  width: 54px;
+}
+
 .preview__body {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 220px 1fr;
   height: 100%;
 }
 
@@ -260,6 +343,7 @@ button:hover {
 
 .preview__grid {
   position: relative;
+  min-height: 514px;
 }
 
 .preview__card,
@@ -286,22 +370,27 @@ button:hover {
 }
 
 .preview__event--one {
-  top: 60px;
+  top: 44px;
 }
 
 .preview__event--two {
-  top: 170px;
-  right: 90px;
+  top: 150px;
+  right: 120px;
 }
 
 .preview__event--three {
-  top: 300px;
-  left: 90px;
+  top: 274px;
+  left: 110px;
 }
 
 @media (max-width: 960px) {
+  body {
+    display: block;
+  }
+
   .app {
     grid-template-columns: 1fr;
+    align-items: stretch;
   }
 
   .panel--preview {
@@ -309,6 +398,14 @@ button:hover {
   }
 
   .preview {
-    min-height: 420px;
+    min-height: 460px;
+  }
+
+  .preview__body {
+    grid-template-columns: 160px 1fr;
+  }
+
+  .preview__grid {
+    min-height: 354px;
   }
 }
