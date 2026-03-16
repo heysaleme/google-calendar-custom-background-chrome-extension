@@ -154,18 +154,13 @@ This was done to keep preview behavior predictable and avoid mismatches between 
 
 ## Screenshots
 
-If you want to add screenshots to the repository, put them here:
+### Options Page
 
-- `assets/screenshots/options-page.png`
-- `assets/screenshots/calendar-view.png`
+![Options page](assets/screenshots/options-page.png)
 
-Recommended screenshots:
+### Google Calendar View
 
-1. `options-page.png`
-   Show the extension settings page with the blue theme and preview visible.
-
-2. `calendar-view.png`
-   Show Google Calendar with a custom background already applied, including the softened left sidebar and the small header button that opens settings.
+![Google Calendar with custom background](assets/screenshots/calendar-view.png)
 
 ## Limitations
 
