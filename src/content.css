@@ -3,6 +3,12 @@ body.gcbe-ready {
   background: transparent !important;
 }
 
+body.gcbe-ready {
+  --gcbe-panel: rgba(255, 255, 255, 0.08);
+  --gcbe-panel-strong: rgba(255, 255, 255, 0.14);
+  --gcbe-sidebar-radius: 24px;
+}
+
 #gcbe-background-layer {
   position: fixed;
   inset: 0;
@@ -26,5 +32,49 @@ body.gcbe-ready {
 .gcbe-transparent,
 .gcbe-transparent::before,
 .gcbe-transparent::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Left sidebar and tasks-related surfaces based on CalendarThemeExtension's targeted fixes. */
+.QQYuzf,
+.YO50ue,
+.gboEAb,
+.mkaajd,
+.o8t45d,
+.toUqff,
+.wBon4c,
+.Zlotdb,
+.Az5uJd.RLj2u,
+.sS0sZd,
+.R6TFwe,
+.pbeTDb,
+.mXmivb,
+.RAaXne,
+.Xro3Db-nUpftc > div {
+  background-color: transparent !important;
+}
+
+.QQYuzf,
+.YO50ue,
+.gboEAb,
+.Az5uJd.RLj2u,
+.wBon4c,
+.Zlotdb {
+  background-color: var(--gcbe-panel) !important;
+  border-radius: var(--gcbe-sidebar-radius) !important;
+  overflow: hidden !important;
+}
+
+.QQYuzf,
+.YO50ue,
+.gboEAb {
+  margin-left: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.sS0sZd,
+.R6TFwe {
   background-color: transparent !important;
 }

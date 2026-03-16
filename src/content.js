@@ -14,9 +14,19 @@ const TRANSPARENT_SELECTORS = [
   "html",
   "body",
   "#yDmH0d",
+  "[role='navigation']",
   "[role='main']",
   "[role='main'] > div",
+  "[role='complementary']",
+  "[aria-label='Main drawer']",
+  "[aria-label='Главное меню']",
+  "[aria-label*='My calendars']",
+  "[aria-label*='Мои календари']",
+  "[aria-label*='Tasks']",
+  "[aria-label*='Задачи']",
   "[data-test-id='calendar']",
+  "[aria-label='Tasks']",
+  "[aria-label='Задачи']",
   ".tEhMVd",
   ".A0xKTd",
   ".Xfkwo",
@@ -24,7 +34,12 @@ const TRANSPARENT_SELECTORS = [
   ".Kk7lMc-XuHpsb",
   ".Kk7lMc-DWWcKd-OomVLb",
   ".MCxZp",
-  ".EIlDfe"
+  ".EIlDfe",
+  ".LzwiGe",
+  ".fFW7wc",
+  ".QQYuzf",
+  ".IYewr",
+  ".toUqff"
 ];
 
 function ensureBackgroundLayer() {
