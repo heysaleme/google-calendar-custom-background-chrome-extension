@@ -2,7 +2,11 @@
 
 Chromium extension that breathes life into your Google Calendar. Add personal images, solid colors, and enjoy a cleaner, transparent UI.
 
+<br>
+
 ---
+
+<br>
 
 ## ✨ Key Features
 
@@ -11,6 +15,8 @@ Chromium extension that breathes life into your Google Calendar. Add personal im
 * **Seamless UI:** Injected "Quick Settings" button directly in the Calendar header.
 * **Smart Styling:** Auto-adapts to Light/Dark themes and adds transparency to sidebars.
 * **Zero Latency:** Lightweight, no-build vanilla JS implementation.
+
+<br>
 
 ## 🛠 Project Structure
 
@@ -21,7 +27,11 @@ Chromium extension that breathes life into your Google Calendar. Add personal im
 | `options.js/html` | The settings dashboard with live preview & storage logic. |
 | `background.js` | Service worker managing settings page communication. |
 
+<br>
+
 ---
+
+<br>
 
 ## 🚀 Quick Start
 
@@ -31,7 +41,11 @@ Chromium extension that breathes life into your Google Calendar. Add personal im
 4. Click **Load unpacked** and select the project folder.
 5. Open [Google Calendar](https://calendar.google.com) and click the new background icon in the top bar!
 
+<br>
+
 ---
+
+<br>
 
 ## ⚙️ Technical Details
 
@@ -56,13 +70,21 @@ The extension uses `chrome.storage.local` to sync settings.
 
 ---
 
+<br>
+
 ## 📸 Screenshots
 
 | Options Page | Calendar View |
 | --- | --- |
-|  |  |
+| ![Options page](assets/screenshots/options-page.png) | ![Google Calendar with custom background](assets/screenshots/calendar-view.png)
+
+ |
+
+<br>
 
 ---
+
+<br>
 
 ### 🔮 Future Ideas
 
