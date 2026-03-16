@@ -136,13 +136,19 @@ body.gcbe-ready.gcbe-light-theme {
   border-radius: var(--gcbe-sidebar-radius) !important;
   box-shadow: var(--gcbe-panel-shadow) !important;
   backdrop-filter: blur(14px) !important;
-  overflow: hidden !important;
+  overflow-x: hidden !important;
 }
 
 .QQYuzf,
 .gboEAb {
   margin-left: 10px !important;
   margin-bottom: 10px !important;
+}
+
+.QQYuzf,
+.gboEAb,
+.Zlotdb {
+  overflow-y: auto !important;
 }
 
 .YO50ue {
