@@ -67,26 +67,6 @@
             </div>
           </div>
 
-          <div class="field-group">
-            <label for="background-size">Image fit</label>
-            <select id="background-size" name="backgroundSize">
-              <option value="cover">Cover</option>
-              <option value="contain">Contain</option>
-              <option value="auto">Auto</option>
-            </select>
-          </div>
-
-          <div class="field-group">
-            <label for="background-position">Image position</label>
-            <select id="background-position" name="backgroundPosition">
-              <option value="center center">Center</option>
-              <option value="top center">Top</option>
-              <option value="bottom center">Bottom</option>
-              <option value="center left">Left</option>
-              <option value="center right">Right</option>
-            </select>
-          </div>
-
           <div class="actions">
             <button id="save-button" type="submit">Save and apply</button>
             <button id="reset-button" type="button" class="button-secondary">Reset</button>
@@ -103,6 +83,7 @@
         </div>
 
         <div id="preview" class="preview">
+          <img id="preview-image" class="preview__image is-hidden" alt="">
           <div class="preview__overlay"></div>
           <div class="preview__chrome">
             <div class="preview__topbar">

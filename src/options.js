@@ -12,6 +12,7 @@ const DEFAULT_SETTINGS = {
 const form = document.getElementById("settings-form");
 const statusNode = document.getElementById("status");
 const previewNode = document.getElementById("preview");
+const previewImageNode = document.getElementById("preview-image");
 const previewOverlayNode = previewNode.querySelector(".preview__overlay");
 const typeInputs = Array.from(document.querySelectorAll('input[name="backgroundType"]'));
 const typePanels = Array.from(document.querySelectorAll("[data-type-panel]"));
@@ -22,8 +23,6 @@ const localFileInput = document.getElementById("local-file");
 const localFileNameNode = document.getElementById("local-file-name");
 const overlayOpacityInput = document.getElementById("overlay-opacity");
 const overlayOpacityValueNode = document.getElementById("overlay-opacity-value");
-const backgroundSizeInput = document.getElementById("background-size");
-const backgroundPositionInput = document.getElementById("background-position");
 const resetButton = document.getElementById("reset-button");
 
 let currentSettings = { ...DEFAULT_SETTINGS };
@@ -56,8 +55,8 @@ function collectSettingsFromForm() {
     localImageDataUrl: currentSettings.localImageDataUrl || "",
     localFileName: currentSettings.localFileName || "",
     overlayOpacity: Number(overlayOpacityInput.value),
-    backgroundSize: backgroundSizeInput.value,
-    backgroundPosition: backgroundPositionInput.value
+    backgroundSize: "cover",
+    backgroundPosition: "center center"
   };
 }
 
@@ -77,10 +76,17 @@ function applyPreview(settings) {
   const imageSource = getPreviewImage(settings);
 
   previewNode.style.backgroundColor = settings.backgroundColor;
-  previewNode.style.backgroundImage = imageSource ? `url("${imageSource}")` : "none";
-  previewNode.style.backgroundSize = settings.backgroundSize === "cover" ? "contain" : settings.backgroundSize;
-  previewNode.style.backgroundPosition = settings.backgroundPosition;
-  previewNode.style.backgroundRepeat = "no-repeat";
+  previewNode.style.backgroundImage = "none";
+
+  if (imageSource) {
+    previewImageNode.src = imageSource;
+    previewImageNode.classList.remove("is-hidden");
+    previewImageNode.style.objectFit = "cover";
+    previewImageNode.style.objectPosition = "center center";
+  } else {
+    previewImageNode.removeAttribute("src");
+    previewImageNode.classList.add("is-hidden");
+  }
 
   previewOverlayNode.style.background = `rgba(255, 255, 255, ${settings.overlayOpacity / 100})`;
   overlayOpacityValueNode.textContent = `${settings.overlayOpacity}%`;
@@ -97,8 +103,6 @@ function renderForm(settings) {
   backgroundColorTextInput.value = settings.backgroundColor;
   localFileNameNode.textContent = settings.localFileName || "No file selected.";
   overlayOpacityInput.value = String(settings.overlayOpacity);
-  backgroundSizeInput.value = settings.backgroundSize;
-  backgroundPositionInput.value = settings.backgroundPosition;
   applyPreview(settings);
 }
 
@@ -115,7 +119,9 @@ async function loadSettings() {
   const stored = await chrome.storage.local.get(DEFAULT_SETTINGS);
   currentSettings = {
     ...DEFAULT_SETTINGS,
-    ...stored
+    ...stored,
+    backgroundSize: "cover",
+    backgroundPosition: "center center"
   };
   renderForm(currentSettings);
 }
@@ -202,14 +208,6 @@ localFileInput.addEventListener("change", async () => {
 });
 
 overlayOpacityInput.addEventListener("input", () => {
-  applyPreview(collectSettingsFromForm());
-});
-
-backgroundSizeInput.addEventListener("change", () => {
-  applyPreview(collectSettingsFromForm());
-});
-
-backgroundPositionInput.addEventListener("change", () => {
   applyPreview(collectSettingsFromForm());
 });
 

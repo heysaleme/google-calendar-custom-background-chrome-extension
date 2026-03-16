@@ -75,8 +75,8 @@ function applyBackground(settings) {
 
   layer.style.backgroundColor = settings.backgroundColor || DEFAULT_SETTINGS.backgroundColor;
   layer.style.backgroundImage = hasImage ? `url("${imageSource}")` : "none";
-  layer.style.backgroundSize = settings.backgroundSize || DEFAULT_SETTINGS.backgroundSize;
-  layer.style.backgroundPosition = settings.backgroundPosition || DEFAULT_SETTINGS.backgroundPosition;
+  layer.style.backgroundSize = "cover";
+  layer.style.backgroundPosition = "center center";
   layer.style.setProperty("--gcbe-overlay", `rgba(255, 255, 255, ${(settings.overlayOpacity ?? DEFAULT_SETTINGS.overlayOpacity) / 100})`);
   layer.classList.toggle("gcbe-color-only", !hasImage);
 }

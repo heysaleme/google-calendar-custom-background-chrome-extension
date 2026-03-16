@@ -258,6 +258,15 @@ button:hover {
     0 22px 46px rgba(40, 82, 145, 0.16);
 }
 
+.preview__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-position: center center;
+  pointer-events: none;
+}
+
 .preview::before {
   content: "";
   position: absolute;
@@ -279,26 +288,26 @@ button:hover {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-rows: 22px 58px 1fr;
+  grid-template-rows: 14px 40px 1fr;
   height: 100%;
 }
 
 .preview__topbar,
 .preview__toolbar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(223, 236, 255, 0.28);
+  background: rgba(223, 236, 255, 0.14);
 }
 
 .preview__topbar {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 0 14px;
+  padding: 0 10px;
 }
 
 .preview__dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.72);
 }
@@ -308,14 +317,14 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 0 18px;
+  padding: 0 12px;
 }
 
 .preview__search {
-  width: min(320px, 48%);
-  height: 34px;
+  width: min(280px, 44%);
+  height: 24px;
   border-radius: 999px;
-  background: rgba(248, 252, 255, 0.62);
+  background: rgba(248, 252, 255, 0.4);
 }
 
 .preview__toolbar-actions {
@@ -324,30 +333,30 @@ button:hover {
 }
 
 .preview__pill {
-  width: 68px;
-  height: 14px;
+  width: 44px;
+  height: 10px;
   border-radius: 999px;
-  background: rgba(248, 252, 255, 0.54);
+  background: rgba(248, 252, 255, 0.34);
 }
 
 .preview__pill--short {
-  width: 42px;
+  width: 28px;
 }
 
 .preview__body {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 112px 1fr;
   height: 100%;
 }
 
 .preview__sidebar,
 .preview__grid {
-  padding: 14px;
+  padding: 10px;
 }
 
 .preview__sidebar {
   border-right: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(226, 239, 255, 0.22);
+  background: rgba(226, 239, 255, 0.08);
 }
 
 .preview__grid {
@@ -358,38 +367,38 @@ button:hover {
 .preview__card,
 .preview__event {
   border-radius: 18px;
-  background: rgba(247, 251, 255, 0.62);
+  background: rgba(247, 251, 255, 0.66);
   backdrop-filter: blur(10px);
 }
 
 .preview__card {
-  height: 54px;
-  margin-bottom: 12px;
+  height: 38px;
+  margin-bottom: 10px;
 }
 
 .preview__card--tall {
-  height: 98px;
+  height: 72px;
 }
 
 .preview__event {
   position: absolute;
-  left: 20px;
-  right: 20px;
-  height: 50px;
+  left: 14px;
+  right: 14px;
+  height: 40px;
 }
 
 .preview__event--one {
-  top: 26px;
+  top: 18px;
 }
 
 .preview__event--two {
-  top: 108px;
-  right: 88px;
+  top: 86px;
+  right: 70px;
 }
 
 .preview__event--three {
-  top: 198px;
-  left: 78px;
+  top: 156px;
+  left: 62px;
 }
 
 @media (max-width: 960px) {
@@ -412,7 +421,7 @@ button:hover {
   }
 
   .preview__body {
-    grid-template-columns: 136px 1fr;
+    grid-template-columns: 92px 1fr;
   }
 
   .preview__grid {
