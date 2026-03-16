@@ -76,9 +76,7 @@ The extension uses `chrome.storage.local` to sync settings.
 
 | Options Page | Calendar View |
 | --- | --- |
-| ![Options page](assets/screenshots/options-page.png) | ![Google Calendar with custom background](assets/screenshots/calendar-view.png)
-
- |
+| ![Options page](assets/screenshots/options-page.png) | ![Google Calendar with custom background](assets/screenshots/calendar-view.png) |
 
 <br>
 
