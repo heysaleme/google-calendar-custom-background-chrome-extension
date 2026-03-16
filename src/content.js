@@ -10,7 +10,10 @@ const DEFAULT_SETTINGS = {
 };
 
 const BACKGROUND_ID = "gcbe-background-layer";
+const SETTINGS_BUTTON_ID = "gcbe-settings-button";
 const DARK_THEME_CLASS = "CcsDpe";
+const TOP_BUTTONS_CLASS = "d6McF";
+const BUTTON_HOLDER_CLASS = "uW9umb";
 const TRANSPARENT_SELECTORS = [
   "html",
   "body",
@@ -84,6 +87,42 @@ function syncThemeClass() {
   }
 }
 
+function createSettingsButton() {
+  const button = document.createElement("button");
+  button.id = SETTINGS_BUTTON_ID;
+  button.className = TOP_BUTTONS_CLASS;
+  button.type = "button";
+  button.title = "Change background";
+  button.setAttribute("aria-label", "Change background");
+  button.innerHTML = `
+    <span class="xjKiLb">
+      <span class="Ce1Y1c gcbe-settings-button__icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="NMm5M hhikbc gcbe-settings-button__icon">
+          <path d="M4 6.75A2.75 2.75 0 0 1 6.75 4h10.5A2.75 2.75 0 0 1 20 6.75v10.5A2.75 2.75 0 0 1 17.25 20H6.75A2.75 2.75 0 0 1 4 17.25ZM6.75 5.5c-.69 0-1.25.56-1.25 1.25v10.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25V6.75c0-.69-.56-1.25-1.25-1.25ZM8 15.5l2.7-3.37a1 1 0 0 1 1.57.02l1.57 1.99 1.56-2.01a1 1 0 0 1 1.58 1.23l-2.35 3.02A1 1 0 0 1 13.86 16l-1.59-2.02-2.5 3.12A1 1 0 1 1 8 15.5Zm2.25-5.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"></path>
+        </svg>
+      </span>
+    </span>
+  `;
+  button.addEventListener("click", () => {
+    chrome.runtime.sendMessage({ type: "gcbe:open-options" });
+  });
+  return button;
+}
+
+function installSettingsButton() {
+  if (document.getElementById(SETTINGS_BUTTON_ID)) {
+    return;
+  }
+
+  const buttonHolder = document.querySelector(`.${BUTTON_HOLDER_CLASS}`);
+
+  if (!buttonHolder) {
+    return;
+  }
+
+  buttonHolder.insertBefore(createSettingsButton(), buttonHolder.firstElementChild || null);
+}
+
 function getImageSource(settings) {
   if (settings.backgroundType === "url") {
     return settings.imageUrl;
@@ -104,6 +143,7 @@ function applyBackground(settings) {
   const layer = ensureBackgroundLayer();
   markTransparentNodes();
   syncThemeClass();
+  installSettingsButton();
 
   const imageSource = getImageSource(settings);
   const hasImage = Boolean(imageSource);
@@ -119,6 +159,7 @@ function applyBackground(settings) {
 function initObserver() {
   const contentObserver = new MutationObserver(() => {
     markTransparentNodes();
+    installSettingsButton();
   });
 
   contentObserver.observe(document.documentElement, {

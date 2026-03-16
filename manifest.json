@@ -3,13 +3,29 @@
   "name": "Google Calendar Custom Background",
   "version": "0.1.0",
   "description": "Apply a custom background to Google Calendar with URL, color, or local upload.",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "128": "assets/icons/icon128.png"
+  },
   "permissions": [
     "storage"
   ],
   "host_permissions": [
     "https://calendar.google.com/*"
   ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
   "options_page": "src/options.html",
+  "action": {
+    "default_title": "Google Calendar Custom Background",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
   "content_scripts": [
     {
       "matches": [
