@@ -165,3 +165,16 @@ body.gcbe-ready.gcbe-light-theme {
 .R6TFwe {
   background-color: transparent !important;
 }
+
+[data-eventid="tasks_rollover_view"] [data-stacked-layout-chip="true"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+[data-eventid="tasks_rollover_view"] .nHqeVd,
+[data-eventid="tasks_rollover_view"] .WBi6vc {
+  background: transparent !important;
+  background-color: transparent !important;
+}
