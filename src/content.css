@@ -166,7 +166,58 @@ body.gcbe-ready.gcbe-light-theme {
   background-color: transparent !important;
 }
 
-[data-eventid="tasks_rollover_view"] [data-stacked-layout-chip="true"] {
+[role="row"].Qotkjb,
+.PTdDEc.enpite,
+.ZDEHt,
+.R9tCRe,
+.dgndR,
+.djb5I,
+.INK2ed,
+.bOyeud,
+.gZ8fdb,
+.qLWd9c,
+.vEJ0bc.GHWQBd,
+[data-eventid="tasks_rollover_view"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[role="row"].Qotkjb::before,
+[role="row"].Qotkjb::after,
+.PTdDEc.enpite::before,
+.PTdDEc.enpite::after,
+.ZDEHt::before,
+.ZDEHt::after,
+.R9tCRe::before,
+.R9tCRe::after,
+.dgndR::before,
+.dgndR::after,
+.djb5I::before,
+.djb5I::after,
+.INK2ed::before,
+.INK2ed::after,
+.bOyeud::before,
+.bOyeud::after,
+.gZ8fdb::before,
+.gZ8fdb::after,
+.qLWd9c::before,
+.qLWd9c::after,
+.vEJ0bc.GHWQBd::before,
+.vEJ0bc.GHWQBd::after,
+[data-eventid="tasks_rollover_view"]::before,
+[data-eventid="tasks_rollover_view"]::after {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[data-eventid="tasks_rollover_view"],
+[data-eventid="tasks_rollover_view"]::before,
+[data-eventid="tasks_rollover_view"]::after,
+[data-eventid="tasks_rollover_view"] [data-stacked-layout-chip="true"],
+[data-eventid="tasks_rollover_view"] [data-stacked-layout-chip="true"]::before,
+[data-eventid="tasks_rollover_view"] [data-stacked-layout-chip="true"]::after {
   background: transparent !important;
   background-color: transparent !important;
   border: 0 !important;
