@@ -1,91 +1,136 @@
-# 📅 Google Calendar Custom Background
+# Google Calendar Custom Background
 
-Chromium extension that breathes life into your Google Calendar. Add personal images, solid colors, and enjoy a cleaner, transparent UI.
+Make Google Calendar look more personal by adding your own background image or color.
 
-<br>
+This extension works in Chromium-based browsers such as:
+- Google Chrome
+- Microsoft Edge
+- Brave
+- Opera
 
----
+## What It Does
 
-<br>
+With this extension, you can:
+- set a background image from a link
+- upload an image from your computer
+- use a solid background color
+- preview the result before saving
 
-## ✨ Key Features
+The extension also makes parts of Google Calendar more transparent so your background is easier to see.
 
-* **Custom Backgrounds:** Support for Image URLs, Local Uploads, or Solid Colors.
-* **Live Preview:** See changes in real-time within the settings page.
-* **Seamless UI:** Injected "Quick Settings" button directly in the Calendar header.
-* **Smart Styling:** Auto-adapts to Light/Dark themes and adds transparency to sidebars.
-* **Zero Latency:** Lightweight, no-build vanilla JS implementation.
+## How To Install
 
-<br>
+This extension is not installed from the Chrome Web Store. You need to add it manually once.
 
-## 🛠 Project Structure
+1. Download this project to your computer.
+2. If you downloaded a ZIP file, unzip it first.
+3. Open your browser and go to `chrome://extensions`
+4. Turn on `Developer mode` in the top right corner.
+5. Click `Load unpacked`.
+6. Select the project folder.
 
-| File | Responsibility |
-| --- | --- |
-| `manifest.json` | Extension metadata & Manifest V3 configuration. |
-| `content.js/css` | Injects background, handles theme detection & UI transparency. |
-| `options.js/html` | The settings dashboard with live preview & storage logic. |
-| `background.js` | Service worker managing settings page communication. |
+After that, the extension will appear in your browser.
 
-<br>
+## How To Open The Settings
 
----
+You can open the settings in either of these ways:
 
-<br>
+1. Open [Google Calendar](https://calendar.google.com)
+2. Click the small background/settings icon in the top bar
 
-## 🚀 Quick Start
+Or:
 
-1. **Clone** this repository or download the ZIP.
-2. Open **`chrome://extensions`** in your browser.
-3. Enable **Developer mode** (toggle in the top right).
-4. Click **Load unpacked** and select the project folder.
-5. Open [Google Calendar](https://calendar.google.com) and click the new background icon in the top bar!
+1. Open `chrome://extensions`
+2. Find `Google Calendar Custom Background`
+3. Open its details
+4. Click `Extension options`
 
-<br>
+## How To Use It
 
----
+1. Open the extension settings.
+2. Choose one background type:
+   `Image URL`, `Color`, or `Local image`
+3. Enter the image link, choose a color, or upload a file.
+4. Adjust `Overlay opacity` if you want the background to be more visible or more soft.
+5. Click `Save and apply`.
+6. Go back to Google Calendar.
 
-<br>
+If you do not see the change right away, refresh the Google Calendar tab.
 
-## ⚙️ Technical Details
+## Background Types Explained
 
-<details>
-<summary><b>How it works (Click to expand)</b></summary>
+### Image URL
 
-The extension uses `chrome.storage.local` to sync settings.
+Use this if you have a direct link to an image online.
 
-* **Rendering:** Backgrounds are forced to `background-size: cover` and `center center` for consistent UI.
-* **Theming:** Injects CSS variables to soften Google's native sidebar and task panels.
-* **Communication:** A background worker ensures the settings page opens safely from the injected header button.
+Best option:
+- links that end with `.jpg`, `.jpeg`, `.png`, or `.webp`
 
-</details>
+Some websites do not allow direct image loading, so if one link does not work, try another.
 
-<details>
-<summary><b>Current Limitations</b></summary>
+### Color
 
-* **DOM Sensitivity:** Since Google Calendar is a 3rd-party app, UI updates by Google may require CSS selector fixes.
-* **Storage:** Large local images might hit storage limits; URLs are recommended for high-res photos.
+Use this if you want a simple solid background.
 
-</details>
+You can:
+- pick a color with the color picker
+- type a color like `#27476e`
 
----
+### Local Image
 
-<br>
+Use this if the image is saved on your computer.
 
-## 📸 Screenshots
+Supported formats include:
+- JPG
+- PNG
+- WEBP
 
-| Options Page | Calendar View |
+## Troubleshooting
+
+### The background does not appear
+
+Try this:
+- refresh Google Calendar
+- reopen the settings and click `Save and apply` again
+- reload the extension on `chrome://extensions`
+
+### My image link does not work
+
+This usually means the link is not a direct image URL.
+
+Try using:
+- a direct file link ending in `.jpg`, `.png`, or `.webp`
+- a different image host
+
+### My uploaded image does not load
+
+Try:
+- using a smaller file
+- using JPG or PNG
+- selecting the file again
+
+### Google Calendar looks strange after a Google update
+
+Google sometimes changes its interface, and this extension depends on that interface.
+If that happens, the extension may need an update.
+
+## Screenshots
+
+| Settings | Calendar |
 | --- | --- |
 | ![Options page](assets/screenshots/options-page.png) | ![Google Calendar with custom background](assets/screenshots/calendar-view.png) |
 
-<br>
+## Good To Know
 
----
+- Your settings are saved in the browser.
+- The extension only runs on `calendar.google.com`.
+- Very large local images may not save well.
+- Google Calendar's own interface updates can sometimes affect the styling.
 
-<br>
+## For Developers
 
-### 🔮 Future Ideas
-
-* [ ] Blur & Brightness filters.
-* [ ] Curated background presets.
-* [ ] Multiple transparency profiles for the sidebar.
+If you are editing the project itself:
+- `manifest.json` contains extension settings
+- `src/content.js` and `src/content.css` apply the background inside Google Calendar
+- `src/options.html`, `src/options.css`, and `src/options.js` power the settings page
+- `src/background.js` opens the options page from the injected button
