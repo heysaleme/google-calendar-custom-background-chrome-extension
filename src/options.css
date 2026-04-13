@@ -244,6 +244,11 @@ button:hover {
 }
 
 .preview {
+  --preview-topbar: rgba(223, 236, 255, 0.14);
+  --preview-line: rgba(255, 255, 255, 0.2);
+  --preview-sidebar: rgba(226, 239, 255, 0.08);
+  --preview-surface: rgba(247, 251, 255, 0.66);
+  --preview-accent: rgba(248, 252, 255, 0.4);
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -256,6 +261,14 @@ button:hover {
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.42),
     0 22px 46px rgba(40, 82, 145, 0.16);
+}
+
+.preview[data-theme="dark"] {
+  --preview-topbar: rgba(10, 14, 22, 0.32);
+  --preview-line: rgba(255, 255, 255, 0.1);
+  --preview-sidebar: rgba(12, 18, 28, 0.22);
+  --preview-surface: rgba(16, 24, 38, 0.58);
+  --preview-accent: rgba(244, 248, 255, 0.18);
 }
 
 .preview__image {
@@ -294,8 +307,8 @@ button:hover {
 
 .preview__topbar,
 .preview__toolbar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(223, 236, 255, 0.14);
+  border-bottom: 1px solid var(--preview-line);
+  background: var(--preview-topbar);
 }
 
 .preview__topbar {
@@ -324,7 +337,7 @@ button:hover {
   width: min(280px, 44%);
   height: 24px;
   border-radius: 999px;
-  background: rgba(248, 252, 255, 0.4);
+  background: var(--preview-accent);
 }
 
 .preview__toolbar-actions {
@@ -336,7 +349,7 @@ button:hover {
   width: 44px;
   height: 10px;
   border-radius: 999px;
-  background: rgba(248, 252, 255, 0.34);
+  background: var(--preview-accent);
 }
 
 .preview__pill--short {
@@ -355,8 +368,8 @@ button:hover {
 }
 
 .preview__sidebar {
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(226, 239, 255, 0.08);
+  border-right: 1px solid var(--preview-line);
+  background: var(--preview-sidebar);
 }
 
 .preview__grid {
@@ -367,7 +380,7 @@ button:hover {
 .preview__card,
 .preview__event {
   border-radius: 18px;
-  background: rgba(247, 251, 255, 0.66);
+  background: var(--preview-surface);
   backdrop-filter: blur(10px);
 }
 

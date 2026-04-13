@@ -75,16 +75,8 @@ function syncThemeClass() {
   }
 
   const isDarkTheme = document.body.classList.contains(DARK_THEME_CLASS);
-  const shouldHaveDark = isDarkTheme;
-  const shouldHaveLight = !isDarkTheme;
-
-  if (document.body.classList.contains("gcbe-dark-theme") !== shouldHaveDark) {
-    document.body.classList.toggle("gcbe-dark-theme", shouldHaveDark);
-  }
-
-  if (document.body.classList.contains("gcbe-light-theme") !== shouldHaveLight) {
-    document.body.classList.toggle("gcbe-light-theme", shouldHaveLight);
-  }
+  document.body.classList.toggle("gcbe-dark-theme", isDarkTheme);
+  document.body.classList.toggle("gcbe-light-theme", !isDarkTheme);
 }
 
 function createSettingsButton() {
@@ -147,12 +139,18 @@ function applyBackground(settings) {
 
   const imageSource = getImageSource(settings);
   const hasImage = Boolean(imageSource);
+  const isDarkTheme = document.body.classList.contains(DARK_THEME_CLASS);
 
   layer.style.backgroundColor = settings.backgroundColor || DEFAULT_SETTINGS.backgroundColor;
   layer.style.backgroundImage = hasImage ? `url("${imageSource}")` : "none";
   layer.style.backgroundSize = "cover";
   layer.style.backgroundPosition = "center center";
-  layer.style.setProperty("--gcbe-overlay", `rgba(255, 255, 255, ${(settings.overlayOpacity ?? DEFAULT_SETTINGS.overlayOpacity) / 100})`);
+  layer.style.setProperty(
+    "--gcbe-overlay",
+    isDarkTheme
+      ? `rgba(0, 0, 0, ${(settings.overlayOpacity ?? DEFAULT_SETTINGS.overlayOpacity) / 100})`
+      : `rgba(255, 255, 255, ${(settings.overlayOpacity ?? DEFAULT_SETTINGS.overlayOpacity) / 100})`
+  );
   layer.classList.toggle("gcbe-color-only", !hasImage);
 }
 
@@ -169,6 +167,9 @@ function initObserver() {
 
   const themeObserver = new MutationObserver(() => {
     syncThemeClass();
+    chrome.storage.local.get(DEFAULT_SETTINGS, (settings) => {
+      applyBackground(settings);
+    });
   });
 
   themeObserver.observe(document.body, {
