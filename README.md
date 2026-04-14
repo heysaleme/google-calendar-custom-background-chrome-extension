@@ -4,6 +4,7 @@ Make Google Calendar look more personal by adding your own background image or c
 
 This extension works in Chromium-based browsers such as:
 - Google Chrome
+- Arc
 - Microsoft Edge
 - Brave
 - Opera
